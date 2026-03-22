@@ -88,20 +88,24 @@ section{
     opacity: .5;
 }
 
-/* hero section */
-
 /* Cursor Reveal Hero Section */
 .hero-section {
     position: relative;
+    padding: 0;
 }
 
 .hero-layer {
     position: absolute;
-    inset: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: center/cover no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .hero-content {
@@ -112,23 +116,30 @@ section{
 
 .hero-content h1 {
     font-size: clamp(3rem, 6vw, 5.5rem);
-    font: 700 clamp(3rem, 6vw, 5.5rem)/1.1;
+    font-weight: 700;
     letter-spacing: -1px;
+    line-height: 1.1;
     text-transform: uppercase;
 }
 
-.bg-dark { color: var(--text-color); }
+.bg-dark {
+    color: var(--text-color);
+}
 
 .bg-light {
     color: #000;
-    clip-path: circle(var(--cursor-radius,150px) at var(--x) var(--y));
+    /* Circle size is dynamically driven by JS now based on speed and random interval base */
+    clip-path: circle(var(--cursor-radius, 150px) at var(--x) var(--y));
     pointer-events: none;
     z-index: 5;
+    /* Removed transition since requestAnimationFrame and lerp provide perfectly synchronized interpolation frame by frame */
 }
 
+/* Hero HUD Top UI */
 .hero-ui {
     position: absolute;
-    inset: 0;
+    width: 100%;
+    height: 100%;
     z-index: 10;
     pointer-events: none;
     display: flex;
@@ -144,7 +155,8 @@ section{
     flex-direction: column;
     align-items: center;
     gap: 1.5rem;
-    font: 0.85rem var(--font-primary);
+    font-family: var(--font-primary);
+    font-size: 0.85rem;
     letter-spacing: 1px;
     opacity: 0.7;
 }
@@ -166,14 +178,80 @@ section{
 }
 
 .bottom-hud .side {
-    font: 500 1rem var(--font-primary);
+    font-family: var(--font-primary);
+    /* Monoish */
+    font-size: 1rem;
+    font-weight: 500;
     letter-spacing: 0.5px;
     opacity: 0.8;
 }
 
 .bottom-hud .center {
+    font-family: var(--font-primary);
     text-align: center;
-    font: 300 0.95rem var(--font-primary);
-    line-height: 1.8;
+    font-size: 0.95rem;
+    font-weight: 300;
     opacity: 0.9;
+    line-height: 1.8;
+}
+
+/* About Section */
+.about-section {
+    padding: 4rem 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8rem;
+}
+
+.about-container {
+    display: flex;
+    gap: 4rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.about-label {
+    flex: 0 0 15%;
+    font-family: var(--font-primary);
+    font-weight: 700;
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+.about-text h2 {
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    line-height: 1.3;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.stats-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 4rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.stat-box {
+    text-align: center;
+}
+
+.accent-text {
+    color: var(--accent-color);
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.stat-box p {
+    font-size: 0.9rem;
+    font-weight: 400;
+    opacity: 0.8;
+    line-height: 1.4;
 }
