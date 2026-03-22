@@ -16,10 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let lastX = currentX;
     let lastY = currentY;
 
-    // Randomly change the base size of the circle every 1.5s
-    setInterval(() => {
-        baseRadius = Math.random() * 100 + 100; // Random value between 100 and 200
-    }, 1500);
+    // Remove random size changes - only change size based on cursor movement
 
     // Use a small lerp to make the tracking feel perfectly smooth and sharp
     function animateCursor() {
@@ -31,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
         lastX = currentX;
         lastY = currentY;
 
-        // The target radius combines the random base size with speed-based expansion
+        // The target radius combines the base size with speed-based expansion
         const dynamicTargetRadius = baseRadius + Math.min(speed * 3, 100);
         currentRadius += (dynamicTargetRadius - currentRadius) * 0.1; // Smooth interpolate the radius
 
