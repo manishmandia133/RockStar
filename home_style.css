@@ -18,10 +18,15 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body{
     background-color: var(--bg-colour);
     color: var(--text-color);
-    overflow: hidden;
+    overflow-y: auto;
+    overflow-x: hidden;
     font-family: var(--font-primary);
     /* -webkit-font-smoothing: antialiased; */
 }
@@ -36,8 +41,7 @@ h3,
 
 
 section{
-    min-height: 100vh;
-    scroll-snap-align: start;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
