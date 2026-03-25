@@ -3,73 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Manish Mandia - UI Developer & Frontend Engineer Portfolio">
     <link rel="icon" href="assets/favicon_zoro.png" type="image/png">
-    <title>POSTER</title>
+    <title>Manish Mandia | UI Developer</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Space+Grotesk:wght@500;700&display=swap"
-        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="home_style.css">
-    <script src="first.js"></script>
-
-    
 </head>
 <body>
-    <!-- nav bra-->
+    <!-- Navigation -->
     <nav class="glass_navbar">
-        <div class="logo_wrapper">
-            <span class="logo" >
-                Manish
-                <span style="font-family: Inter; font-weight: 300;">
-                    mandia
-                </span>
-            </span>
-        </div>  
-
+        <div class="logo">
+            Manish <span>mandia</span>
+        </div>
         <ul>
             <li><a href="#about">About</a></li>
             <li><a href="#timeline">Timeline</a></li>
             <li><a href="#works">Works</a></li>
-            <li><a href="#contacts">Contact</a></li>
+            <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
 
-    <main>
+    <main id="main">
+        <!-- Hero Section -->
         <section id="hero">
-            <div class="hero-layer bg-dark"
-                style="background-image: linear-gradient(rgba(10,10,10,0.4)), url('assets/user_foreground.png');">
-                <div class="hero-content">
-                    <h1>I BUILD THE QUIET SPACE-<br>WHERE FUNCTION AND BEAUTY MEET.</h1>
+            <div class="hero-layer bg-dark"></div>
+            <div class="hero-layer bg-light"></div>
+
+            <div class="hero-ui">
+                <div class="scroll-indicator">
+                    <span class="label">Scroll</span>
+                    <div class="line"></div>
                 </div>
-            </div>
-            <div class="hero-layer bg-light" style="background-image: url('assets/user_background.jpg');">
-                <div class="hero-content text-light">
-                    <!-- Ensure text shadow is zero and color is deeply contrasted for white code bg -->
-                    <h1 style="color: #000; text-shadow: none;">I BUILD THE QUIET SPACE-<br>WHERE FUNCTION AND BEAUTY
-                        MEET.</h1>
-                </div>
-            </div>
 
-            <!-- hero bottom overlay -->
-
-            <div class="hero_ui">
-
-                <div class="bottom-hui">
+                <div class="bottom-hud">
                     <span class="side">UI Developer</span>
-                    <p class="center">I design and develop apps that do more than look good—<br>they tell stories, evoke
-                        emotions, and feel alive.
-                    </p>
-                    <span class="center">Frontend Engineer</span>
-                    
+                    <div class="center">
+                        <p>I design and develop apps that do more than look good—they tell stories, evoke emotions, and feel alive.</p>
+                    </div>
+                    <span class="side right">Frontend Engineer</span>
                 </div>
+            </div>
 
+            <div class="hero-content">
+                <h1>I Build the Quiet Space—<br>Where Function and Beauty Meet.</h1>
             </div>
         </section>
 
         <!-- About Section -->
-        <section id="about" class="about-section">
+        <section id="about">
             <div class="about-container">
-                <div class="about-label">About</div>
+                <span class="about-label">About</span>
                 <div class="about-text">
                     <h2>Passionate UI Developer & Frontend Engineer</h2>
                     <p>I specialize in creating digital experiences that seamlessly blend form and function. With a keen eye for design and technical expertise, I build applications that not only look beautiful but also provide exceptional user experiences.</p>
@@ -77,10 +64,220 @@
                 </div>
             </div>
 
-            
+            <div class="stats-container">
+                <div class="stat-box">
+                    <div class="accent-text">3+</div>
+                    <p>Years of Experience</p>
+                </div>
+                <div class="stat-box">
+                    <div class="accent-text">50+</div>
+                    <p>Projects Completed</p>
+                </div>
+                <div class="stat-box">
+                    <div class="accent-text">30+</div>
+                    <p>Happy Clients</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Timeline Section -->
+        <section id="timeline">
+            <div class="timeline-container">
+                <span class="section-label">Timeline</span>
+                <div class="timeline-content">
+                    <h2>My Journey</h2>
+                    <div class="timeline-items">
+                        <div class="timeline-item">
+                            <div class="timeline-year">2024</div>
+                            <div class="timeline-title">Senior UI Developer</div>
+                            <div class="timeline-company">Tech Company</div>
+                            <div class="timeline-description">Leading frontend development and design systems. Architecting scalable UI solutions and mentoring junior developers.</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">2022</div>
+                            <div class="timeline-title">UI Developer</div>
+                            <div class="timeline-company">Digital Agency</div>
+                            <div class="timeline-description">Built responsive web applications for clients across e-commerce, finance, and healthcare sectors.</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">2020</div>
+                            <div class="timeline-title">Junior Developer</div>
+                            <div class="timeline-company">Startup</div>
+                            <div class="timeline-description">Started journey in frontend development. Learned modern frameworks and best practices.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Works Section -->
+        <section id="works">
+            <div class="works-container">
+                <span class="section-label">Works</span>
+                <div class="works-content">
+                    <h2>Featured Projects</h2>
+                    <div class="works-grid">
+                        <div class="work-card">
+                            <div class="work-image">
+                                <img src="assets/work_1.png" alt="E-Commerce Dashboard Project">
+                                <div class="work-image-overlay">
+                                    <span class="view-project">View Project →</span>
+                                </div>
+                            </div>
+                            <div class="work-info">
+                                <h3>E-Commerce Dashboard</h3>
+                                <p>Modern analytics dashboard with real-time data visualization and intuitive controls.</p>
+                                <div class="work-tags">
+                                    <span>React</span>
+                                    <span>D3.js</span>
+                                    <span>CSS</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="work-card">
+                            <div class="work-image">
+                                <img src="assets/work_2.png" alt="Mobile Banking App Project">
+                                <div class="work-image-overlay">
+                                    <span class="view-project">View Project →</span>
+                                </div>
+                            </div>
+                            <div class="work-info">
+                                <h3>Mobile Banking App</h3>
+                                <p>Clean and secure mobile banking experience with seamless transactions.</p>
+                                <div class="work-tags">
+                                    <span>React Native</span>
+                                    <span>TypeScript</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="work-card">
+                            <div class="work-image">
+                                <img src="assets/work_3.png" alt="Portfolio Template Project">
+                                <div class="work-image-overlay">
+                                    <span class="view-project">View Project →</span>
+                                </div>
+                            </div>
+                            <div class="work-info">
+                                <h3>Portfolio Template</h3>
+                                <p>Minimalist portfolio design for creatives and professionals.</p>
+                                <div class="work-tags">
+                                    <span>HTML</span>
+                                    <span>CSS</span>
+                                    <span>JavaScript</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <div class="contact-container">
+                <span class="section-label">Contact</span>
+                <div class="contact-content">
+                    <h2>Let's Work Together</h2>
+                    <p class="contact-description">Have a project in mind? I'm always open to discussing new opportunities and creating something amazing together.</p>
+
+                    <div class="contact-cta">
+                        <a href="mailto:manish@example.com" class="btn btn-primary">Start a Project</a>
+                        <a href="#works" class="btn btn-outline">View My Work</a>
+                    </div>
+
+                    <div class="contact-links">
+                        <a href="mailto:manish@example.com" class="contact-link">
+                            <div class="contact-link-icon">📧</div>
+                            <div class="contact-link-info">
+                                <span class="contact-link-label">Email</span>
+                                <span class="contact-link-value">manish@example.com</span>
+                            </div>
+                        </a>
+                        <a href="https://linkedin.com/in/manishmandia" target="_blank" class="contact-link">
+                            <div class="contact-link-icon">💼</div>
+                            <div class="contact-link-info">
+                                <span class="contact-link-label">LinkedIn</span>
+                                <span class="contact-link-value">/in/manishmandia</span>
+                            </div>
+                        </a>
+                        <a href="https://github.com/manishmandia" target="_blank" class="contact-link">
+                            <div class="contact-link-icon">🐙</div>
+                            <div class="contact-link-info">
+                                <span class="contact-link-label">GitHub</span>
+                                <span class="contact-link-value">@manishmandia</span>
+                            </div>
+                        </a>
+                        <a href="https://twitter.com/manishmandia" target="_blank" class="contact-link">
+                            <div class="contact-link-icon">🐦</div>
+                            <div class="contact-link-info">
+                                <span class="contact-link-label">Twitter</span>
+                                <span class="contact-link-value">@manishmandia</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
-    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.js"></script>
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 Manish Mandia. All rights reserved.</p>
+            <div class="footer-social">
+                <a href="https://linkedin.com/in/manishmandia" target="_blank">LinkedIn</a>
+                <a href="https://github.com/manishmandia" target="_blank">GitHub</a>
+                <a href="https://twitter.com/manishmandia" target="_blank">Twitter</a>
+            </div>
+        </div>
+    </footer>
+
     <script src="first.js"></script>
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.glass_navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Fade-in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections and cards
+        document.querySelectorAll('.timeline-item, .work-card, .stat-box, .contact-link').forEach(el => {
+            el.classList.add('fade-in');
+            observer.observe(el);
+        });
+
+        // Smooth scroll for nav links
+        document.querySelectorAll('.glass_navbar a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
