@@ -54,7 +54,46 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     /* ----------------------------------------------------
-    3. Initialize Locomotive Scroll (if available)
+    3. 3D Premium Tilt Effect with Dynamic Glow on Work Cards
+    ---------------------------------------------------- */
+    const workCards = document.querySelectorAll('.work-card');
+
+    workCards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+
+            // Subtle 12 degree max rotation for premium feel
+            const rotateX = ((y - centerY) / centerY) * -12;
+            const rotateY = ((x - centerX) / centerX) * 12;
+
+            // Dynamic glow position follows cursor
+            const glowX = (x / rect.width) * 100;
+            const glowY = (y / rect.height) * 100;
+
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+
+            // Update glow gradient position
+            card.style.background = `radial-gradient(circle at ${glowX}% ${glowY}%, rgba(0, 220, 130, 0.2) 0%, #0d0d0d 50%, #1a1a1a 100%)`;
+        });
+
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg)`;
+            card.style.transition = 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), background 0.6s ease';
+            card.style.background = 'linear-gradient(135deg, #0d0d0d 0%, #1a1a1a 100%)';
+        });
+
+        card.addEventListener('mouseenter', () => {
+            card.style.transition = 'none';
+        });
+    });
+
+    /* ----------------------------------------------------
+    4. Initialize Locomotive Scroll (if available)
     ---------------------------------------------------- */
     if (typeof LocomotiveScroll !== 'undefined') {
         try {
@@ -69,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ----------------------------------------------------
-    4. Stats counter animation
+    5. Stats counter animation
     ---------------------------------------------------- */
     const statBoxes = document.querySelectorAll('.stat-box');
 
