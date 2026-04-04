@@ -1,284 +1,391 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="is-loading" lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Manish Mandia - UI Developer & Frontend Engineer Portfolio">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=5" name="viewport">
+    <meta name="description" content="Manish Mandia — UI Developer & Frontend Engineer. Crafting digital experiences where function meets beauty.">
     <link rel="icon" href="assets/favicon_zoro.png" type="image/png">
-    <title>Manish Mandia | UI Developer</title>
+    <title>Manish Mandia — UI Developer</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="home_style.css">
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="glass_navbar">
-        <div class="logo">
-            Manish <span>mandia</span>
+
+    <!-- =================== LOADER =================== -->
+    <div class="o-loader" id="js-loader">
+        <p>
+            <span class="o-loader_letterWrapper"><span class="o-loader_letter">M</span></span>
+            <span class="o-loader_letterWrapper"><span class="o-loader_letter">A</span></span>
+            <span class="o-loader_letterWrapper"><span class="o-loader_letter">N</span></span>
+            <span class="o-loader_letterWrapper"><span class="o-loader_letter">I</span></span>
+            <span class="o-loader_letterWrapper"><span class="o-loader_letter">S</span></span>
+            <span class="o-loader_letterWrapper"><span class="o-loader_letter">H</span></span>
+        </p>
+        <div class="o-loader_progress">
+            <div class="o-loader_bar"></div>
         </div>
-        <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#timeline">Timeline</a></li>
-            <li><a href="#works">Works</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
+    </div>
 
+    <!-- =================== HEADER =================== -->
+    <header class="o-header" id="header">
+        <a class="o-header_logo" href="#">
+            <span class="o-header_letterWrapper"><span style="--delay: 0ms">M</span></span>
+            <span class="o-header_letterWrapper"><span style="--delay: 40ms">A</span></span>
+            <span class="o-header_letterWrapper"><span style="--delay: 80ms">N</span></span>
+            <span class="o-header_letterWrapper"><span style="--delay: 120ms">I</span></span>
+            <span class="o-header_letterWrapper"><span style="--delay: 160ms">S</span></span>
+            <span class="o-header_letterWrapper"><span style="--delay: 200ms">H</span></span>
+        </a>
+        <nav class="o-header_nav">
+            <ul>
+                <li><a href="#about" data-nav>About</a></li>
+                <li><a href="#journey" data-nav>Journey</a></li>
+                <li><a href="#works" data-nav>Works</a></li>
+                <li><a href="#contact" data-nav>Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- =================== MAIN =================== -->
     <main id="main">
-        <!-- Hero Section -->
-        <section id="hero">
-            <div class="hero-layer bg-dark"></div>
-            <div class="hero-layer bg-light"></div>
 
-            <div class="hero-ui">
-                <div class="scroll-indicator">
-                    <span class="label">Scroll</span>
-                    <div class="line"></div>
-                </div>
-
-                <div class="bottom-hud">
-                    <span class="side">UI Developer</span>
-                    <div class="center">
-                        <p>I design and develop apps that do more than look good—they tell stories, evoke emotions, and feel alive.</p>
+        <!-- ====== HERO ====== -->
+        <section class="o-hero" id="hero">
+            <figure class="o-hero_bg">
+                <img src="assets/user_foreground.png" alt="Manish Mandia">
+            </figure>
+            <div class="o-hero_content">
+                <h1 class="o-hero_title" data-split>
+                    <span class="o-hero_line">I Build The</span>
+                    <span class="o-hero_line">Quiet Space</span>
+                </h1>
+                <div class="o-hero_subtitle">
+                    <div class="u-lineWrapper">
+                        <span class="u-line">Where function and beauty meet.</span>
                     </div>
-                    <span class="side right">Frontend Engineer</span>
                 </div>
             </div>
-
-            <div class="hero-content">
-                <h1>I Build the Quiet Space—<br>Where Function and Beauty Meet.</h1>
+            <div class="o-hero_footer">
+                <div class="o-hero_footerLeft">
+                    <div class="u-lineWrapper">
+                        <span class="u-line">UI Developer</span>
+                    </div>
+                </div>
+                <div class="o-hero_footerCenter">
+                    <div class="u-lineWrapper">
+                        <span class="u-line">Scroll to explore</span>
+                    </div>
+                    <div class="o-hero_scrollLine"></div>
+                </div>
+                <div class="o-hero_footerRight">
+                    <div class="u-lineWrapper">
+                        <span class="u-line">Frontend Engineer</span>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <!-- About Section -->
-        <section id="about">
-            <div class="about-container">
-                <span class="about-label">About</span>
-                <div class="about-text">
-                    <h2>Passionate UI Developer & Frontend Engineer</h2>
+        <!-- ====== BIG WORDS MARQUEE ====== -->
+        <section class="o-bigWords">
+            <div class="o-bigWords_row">
+                <span>Design</span><span>·</span>
+                <span>Develop</span><span>·</span>
+                <span>Deploy</span><span>·</span>
+                <span>Design</span><span>·</span>
+                <span>Develop</span><span>·</span>
+                <span>Deploy</span><span>·</span>
+                <span>Design</span><span>·</span>
+                <span>Develop</span><span>·</span>
+                <span>Deploy</span><span>·</span>
+            </div>
+        </section>
+
+        <!-- ====== ABOUT ====== -->
+        <section class="o-about" id="about" data-scroll-section>
+            <div class="row">
+                <div class="o-about_label col-24 lg-col-4" data-scroll-reveal>
+                    <span class="section-label">About</span>
+                </div>
+                <div class="o-about_content col-24 lg-col-14" data-scroll-reveal>
+                    <h2 class="tx-xl" data-split-lines>
+                        Passionate about crafting digital experiences that seamlessly blend form and function.
+                    </h2>
+                </div>
+            </div>
+            <div class="row o-about_body">
+                <div class="o-about_text col-24 lg-col-8 lg-off-4" data-scroll-reveal>
                     <p>I specialize in creating digital experiences that seamlessly blend form and function. With a keen eye for design and technical expertise, I build applications that not only look beautiful but also provide exceptional user experiences.</p>
                     <p>My approach combines modern design principles with clean, efficient code to deliver projects that stand out in today's competitive digital landscape.</p>
                 </div>
-            </div>
-
-            <div class="stats-container">
-                <div class="stat-box">
-                    <div class="accent-text">3+</div>
-                    <p>Years of Experience</p>
-                </div>
-                <div class="stat-box">
-                    <div class="accent-text">50+</div>
-                    <p>Projects Completed</p>
-                </div>
-                <div class="stat-box">
-                    <div class="accent-text">30+</div>
-                    <p>Happy Clients</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Timeline Section -->
-        <section id="timeline">
-            <div class="timeline-container">
-                <span class="section-label">Timeline</span>
-                <div class="timeline-content">
-                    <h2>My Journey</h2>
-                    <div class="timeline-items">
-                        <div class="timeline-item">
-                            <div class="timeline-year">2024</div>
-                            <div class="timeline-title">Senior UI Developer</div>
-                            <div class="timeline-company">Tech Company</div>
-                            <div class="timeline-description">Leading frontend development and design systems. Architecting scalable UI solutions and mentoring junior developers.</div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-year">2022</div>
-                            <div class="timeline-title">UI Developer</div>
-                            <div class="timeline-company">Digital Agency</div>
-                            <div class="timeline-description">Built responsive web applications for clients across e-commerce, finance, and healthcare sectors.</div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-year">2020</div>
-                            <div class="timeline-title">Junior Developer</div>
-                            <div class="timeline-company">Startup</div>
-                            <div class="timeline-description">Started journey in frontend development. Learned modern frameworks and best practices.</div>
-                        </div>
+                <div class="o-about_stats col-24 lg-col-8 lg-off-2" data-scroll-reveal>
+                    <div class="o-about_stat">
+                        <span class="o-about_statNumber">3+</span>
+                        <span class="o-about_statLabel">Years of Experience</span>
+                    </div>
+                    <div class="o-about_stat">
+                        <span class="o-about_statNumber">50+</span>
+                        <span class="o-about_statLabel">Projects Completed</span>
+                    </div>
+                    <div class="o-about_stat">
+                        <span class="o-about_statNumber">30+</span>
+                        <span class="o-about_statLabel">Happy Clients</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Works Marquee Section -->
-        <section class="marquee-section">
-            <div class="marquee-super">
-                <div class="marquee-giant">
-                    WORKS WHILE YOU ARE SLEEPING
+        <!-- ====== EXPERTISE / SKILLS ====== -->
+        <section class="o-expertise" data-scroll-section>
+            <div class="row">
+                <div class="o-expertise_label col-24" data-scroll-reveal>
+                    <span class="section-label">Expertise</span>
                 </div>
-                <div class="marquee-giant">
-                    WORKS WHILE YOU ARE SLEEPING
+                <div class="o-expertise_list col-24" data-scroll-reveal>
+                    <div class="o-expertise_item" data-expertise data-index="0">
+                        <div class="o-expertise_itemTitle tx-2xl">Frontend Development</div>
+                        <p class="o-expertise_itemDesc">React · Vue · Next.js · TypeScript · Performance Optimization</p>
+                    </div>
+                    <div class="o-expertise_item" data-expertise data-index="1">
+                        <div class="o-expertise_itemTitle tx-2xl">UI/UX Design</div>
+                        <p class="o-expertise_itemDesc">Figma · Design Systems · Prototyping · User Research · Accessibility</p>
+                    </div>
+                    <div class="o-expertise_item" data-expertise data-index="2">
+                        <div class="o-expertise_itemTitle tx-2xl">Creative Development</div>
+                        <p class="o-expertise_itemDesc">GSAP · Three.js · WebGL · CSS Animations · Interactive Experiences</p>
+                    </div>
                 </div>
             </div>
-            <div class="works-intro">
-                <span class="section-label">Featured Projects</span>
-                <span>2024 - 2026</span>
-            </div>
-        </section>
-
-        <!-- Works Gallery Section -->
-        <section id="works">
-            <div class="works-container">
-                <div class="works-content">
-                    <span class="section-label">Works</span>
-                    <h2>Featured Projects</h2>
-                </div>
-                <div class="works-grid">
-                    <div class="work-card">
-                        <img src="assets/work_1.png" alt="E-Commerce Dashboard Project">
-                        <div class="card-content">
-                            <h3>E-Commerce Dashboard</h3>
-                            <p>Modern analytics dashboard with real-time data visualization</p>
-                            <div class="card-tags">
-                                <span>React</span>
-                                <span>D3.js</span>
-                                <span>CSS</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="work-card">
-                        <img src="assets/work_2.png" alt="Mobile Banking App Project">
-                        <div class="card-content">
-                            <h3>Mobile Banking App</h3>
-                            <p>Clean and secure mobile banking experience</p>
-                            <div class="card-tags">
-                                <span>React Native</span>
-                                <span>TypeScript</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="work-card">
-                        <img src="assets/work_3.png" alt="Portfolio Template Project">
-                        <div class="card-content">
-                            <h3>Portfolio Template</h3>
-                            <p>Minimalist portfolio design for creatives</p>
-                            <div class="card-tags">
-                                <span>HTML</span>
-                                <span>CSS</span>
-                                <span>JavaScript</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <!-- Background images that reveal on hover -->
+            <div class="o-expertise_photos">
+                <figure class="o-expertise_photo" data-expertise-photo="0">
+                    <img src="assets/expertise_frontend.png" alt="Frontend Development">
+                </figure>
+                <figure class="o-expertise_photo" data-expertise-photo="1">
+                    <img src="assets/expertise_design.png" alt="UI/UX Design">
+                </figure>
+                <figure class="o-expertise_photo" data-expertise-photo="2">
+                    <img src="assets/expertise_creative.png" alt="Creative Development">
+                </figure>
             </div>
         </section>
 
-        <!-- Contact Section -->
-        <section id="contact">
-            <div class="contact-container">
-                <span class="section-label">Contact</span>
-                <div class="contact-content">
-                    <h2>Let's Work Together</h2>
-                    <p class="contact-description">Have a project in mind? I'm always open to discussing new opportunities and creating something amazing together.</p>
-
-                    <div class="contact-cta">
-                        <a href="mailto:manish@example.com" class="btn btn-primary">Start a Project</a>
-                        <a href="#works" class="btn btn-outline">View My Work</a>
-                    </div>
-
-                    <div class="contact-links">
-                        <a href="mailto:manish@example.com" class="contact-link">
-                            <div class="contact-link-icon">📧</div>
-                            <div class="contact-link-info">
-                                <span class="contact-link-label">Email</span>
-                                <span class="contact-link-value">manish@example.com</span>
-                            </div>
-                        </a>
-                        <a href="https://linkedin.com/in/manishmandia" target="_blank" class="contact-link">
-                            <div class="contact-link-icon">💼</div>
-                            <div class="contact-link-info">
-                                <span class="contact-link-label">LinkedIn</span>
-                                <span class="contact-link-value">/in/manishmandia</span>
-                            </div>
-                        </a>
-                        <a href="https://github.com/manishmandia" target="_blank" class="contact-link">
-                            <div class="contact-link-icon">🐙</div>
-                            <div class="contact-link-info">
-                                <span class="contact-link-label">GitHub</span>
-                                <span class="contact-link-value">@manishmandia</span>
-                            </div>
-                        </a>
-                        <a href="https://twitter.com/manishmandia" target="_blank" class="contact-link">
-                            <div class="contact-link-icon">🐦</div>
-                            <div class="contact-link-info">
-                                <span class="contact-link-label">Twitter</span>
-                                <span class="contact-link-value">@manishmandia</span>
-                            </div>
-                        </a>
-                    </div>
+        <!-- ====== JOURNEY / TIMELINE ====== -->
+        <section class="o-journey" id="journey" data-scroll-section>
+            <div class="row">
+                <div class="o-journey_label col-24 lg-col-4" data-scroll-reveal>
+                    <span class="section-label">Journey</span>
+                </div>
+                <div class="o-journey_title col-24 lg-col-19" data-scroll-reveal>
+                    <h2 class="tx-xl" data-split-lines>My Path</h2>
+                </div>
+            </div>
+            <div class="row o-journey_items">
+                <div class="o-journey_item col-24 lg-col-18 lg-off-4" data-scroll-reveal>
+                    <div class="o-journey_year">2024</div>
+                    <div class="o-journey_role">Senior UI Developer</div>
+                    <div class="o-journey_company">Tech Company</div>
+                    <p class="o-journey_desc">Leading frontend development and design systems. Architecting scalable UI solutions and mentoring junior developers.</p>
+                </div>
+                <div class="o-journey_item col-24 lg-col-18 lg-off-4" data-scroll-reveal>
+                    <div class="o-journey_year">2022</div>
+                    <div class="o-journey_role">UI Developer</div>
+                    <div class="o-journey_company">Digital Agency</div>
+                    <p class="o-journey_desc">Built responsive web applications for clients across e-commerce, finance, and healthcare sectors.</p>
+                </div>
+                <div class="o-journey_item col-24 lg-col-18 lg-off-4" data-scroll-reveal>
+                    <div class="o-journey_year">2020</div>
+                    <div class="o-journey_role">Junior Developer</div>
+                    <div class="o-journey_company">Startup</div>
+                    <p class="o-journey_desc">Started journey in frontend development. Learned modern frameworks and best practices.</p>
                 </div>
             </div>
         </section>
+
+        <!-- ====== WORKS ====== -->
+        <section class="o-works" id="works" data-scroll-section>
+            <div class="row">
+                <div class="o-works_label col-24" data-scroll-reveal>
+                    <span class="section-label">Selected Works</span>
+                </div>
+                <div class="o-works_heading col-24 lg-col-19" data-scroll-reveal>
+                    <h2 class="tx-xl" data-split-lines>Featured Projects</h2>
+                </div>
+            </div>
+            <div class="o-works_grid">
+                <a class="o-works_card" href="#" data-scroll-reveal>
+                    <figure class="o-works_cardImage">
+                        <img src="assets/work_1.png" alt="E-Commerce Dashboard" data-parallax>
+                    </figure>
+                    <div class="o-works_cardInfo">
+                        <h3 class="o-works_cardTitle tx-lg">E-Commerce Dashboard</h3>
+                        <p class="o-works_cardDesc">Modern analytics dashboard with real-time data visualization</p>
+                        <div class="o-works_cardTags">
+                            <span>React</span>
+                            <span>D3.js</span>
+                            <span>CSS</span>
+                        </div>
+                        <div class="o-works_cardArrow">
+                            <svg width="7" height="7" viewBox="0 0 7 7" fill="none">
+                                <path d="M1.35.65a.5.5 0 1 0-.7.7l.7-.7ZM6 6.5a.5.5 0 0 0 .5-.5V1.5a.5.5 0 0 0-1 0v4h-4a.5.5 0 0 0 0 1H6ZM1 1l-.35.35 5 5L6 6l.35-.35-5-5L1 1Z" fill="currentColor"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </a>
+                <a class="o-works_card" href="#" data-scroll-reveal>
+                    <figure class="o-works_cardImage">
+                        <img src="assets/work_2.png" alt="Mobile Banking App" data-parallax>
+                    </figure>
+                    <div class="o-works_cardInfo">
+                        <h3 class="o-works_cardTitle tx-lg">Mobile Banking App</h3>
+                        <p class="o-works_cardDesc">Clean and secure mobile banking experience</p>
+                        <div class="o-works_cardTags">
+                            <span>React Native</span>
+                            <span>TypeScript</span>
+                        </div>
+                        <div class="o-works_cardArrow">
+                            <svg width="7" height="7" viewBox="0 0 7 7" fill="none">
+                                <path d="M1.35.65a.5.5 0 1 0-.7.7l.7-.7ZM6 6.5a.5.5 0 0 0 .5-.5V1.5a.5.5 0 0 0-1 0v4h-4a.5.5 0 0 0 0 1H6ZM1 1l-.35.35 5 5L6 6l.35-.35-5-5L1 1Z" fill="currentColor"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </a>
+                <a class="o-works_card" href="#" data-scroll-reveal>
+                    <figure class="o-works_cardImage">
+                        <img src="assets/work_3.png" alt="Portfolio Template" data-parallax>
+                    </figure>
+                    <div class="o-works_cardInfo">
+                        <h3 class="o-works_cardTitle tx-lg">Portfolio Template</h3>
+                        <p class="o-works_cardDesc">Minimalist portfolio design for creatives</p>
+                        <div class="o-works_cardTags">
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>JavaScript</span>
+                        </div>
+                        <div class="o-works_cardArrow">
+                            <svg width="7" height="7" viewBox="0 0 7 7" fill="none">
+                                <path d="M1.35.65a.5.5 0 1 0-.7.7l.7-.7ZM6 6.5a.5.5 0 0 0 .5-.5V1.5a.5.5 0 0 0-1 0v4h-4a.5.5 0 0 0 0 1H6ZM1 1l-.35.35 5 5L6 6l.35-.35-5-5L1 1Z" fill="currentColor"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- ====== CONTACT ====== -->
+        <section class="o-contact" id="contact" data-scroll-section>
+            <div class="row">
+                <div class="o-contact_label col-24" data-scroll-reveal>
+                    <span class="section-label">Contact</span>
+                </div>
+                <div class="o-contact_heading col-24 lg-col-19" data-scroll-reveal>
+                    <h2 class="tx-3xl" data-split-lines>Let's Work Together</h2>
+                </div>
+            </div>
+            <div class="row o-contact_body">
+                <div class="o-contact_text col-24 lg-col-8 lg-off-4" data-scroll-reveal>
+                    <p>Have a project in mind? I'm always open to discussing new opportunities and creating something amazing together.</p>
+                </div>
+                <div class="o-contact_links col-24 lg-col-8 lg-off-2" data-scroll-reveal>
+                    <a class="o-contact_link" href="mailto:manish@example.com">
+                        <span class="o-contact_linkLabel">Email</span>
+                        <span class="o-contact_linkValue">manish@example.com</span>
+                        <svg class="o-contact_linkArrow" width="7" height="7" viewBox="0 0 7 7" fill="none">
+                            <path d="M1.35.65a.5.5 0 1 0-.7.7l.7-.7ZM6 6.5a.5.5 0 0 0 .5-.5V1.5a.5.5 0 0 0-1 0v4h-4a.5.5 0 0 0 0 1H6ZM1 1l-.35.35 5 5L6 6l.35-.35-5-5L1 1Z" fill="currentColor"></path>
+                        </svg>
+                    </a>
+                    <a class="o-contact_link" href="https://linkedin.com/in/manishmandia" target="_blank">
+                        <span class="o-contact_linkLabel">LinkedIn</span>
+                        <span class="o-contact_linkValue">/in/manishmandia</span>
+                        <svg class="o-contact_linkArrow" width="7" height="7" viewBox="0 0 7 7" fill="none">
+                            <path d="M1.35.65a.5.5 0 1 0-.7.7l.7-.7ZM6 6.5a.5.5 0 0 0 .5-.5V1.5a.5.5 0 0 0-1 0v4h-4a.5.5 0 0 0 0 1H6ZM1 1l-.35.35 5 5L6 6l.35-.35-5-5L1 1Z" fill="currentColor"></path>
+                        </svg>
+                    </a>
+                    <a class="o-contact_link" href="https://github.com/manishmandia" target="_blank">
+                        <span class="o-contact_linkLabel">GitHub</span>
+                        <span class="o-contact_linkValue">@manishmandia</span>
+                        <svg class="o-contact_linkArrow" width="7" height="7" viewBox="0 0 7 7" fill="none">
+                            <path d="M1.35.65a.5.5 0 1 0-.7.7l.7-.7ZM6 6.5a.5.5 0 0 0 .5-.5V1.5a.5.5 0 0 0-1 0v4h-4a.5.5 0 0 0 0 1H6ZM1 1l-.35.35 5 5L6 6l.35-.35-5-5L1 1Z" fill="currentColor"></path>
+                        </svg>
+                    </a>
+                    <a class="o-contact_link" href="https://twitter.com/manishmandia" target="_blank">
+                        <span class="o-contact_linkLabel">Twitter</span>
+                        <span class="o-contact_linkValue">@manishmandia</span>
+                        <svg class="o-contact_linkArrow" width="7" height="7" viewBox="0 0 7 7" fill="none">
+                            <path d="M1.35.65a.5.5 0 1 0-.7.7l.7-.7ZM6 6.5a.5.5 0 0 0 .5-.5V1.5a.5.5 0 0 0-1 0v4h-4a.5.5 0 0 0 0 1H6ZM1 1l-.35.35 5 5L6 6l.35-.35-5-5L1 1Z" fill="currentColor"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+
     </main>
 
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <p>&copy; 2026 Manish Mandia. All rights reserved.</p>
-            <div class="footer-social">
-                <a href="https://linkedin.com/in/manishmandia" target="_blank">LinkedIn</a>
-                <a href="https://github.com/manishmandia" target="_blank">GitHub</a>
-                <a href="https://twitter.com/manishmandia" target="_blank">Twitter</a>
+    <!-- =================== FOOTER =================== -->
+    <div class="o-footer_placeholder"></div>
+    <footer class="o-footer">
+        <div class="m-marquee">
+            <ul class="m-marquee_viewport">
+                <li class="m-marquee_item"><span class="tx-2xl">Design</span><span class="tx-lsm">UI</span></li>
+                <li class="m-marquee_item"><span class="tx-2xl">Develop</span><span class="tx-lsm">FE</span></li>
+                <li class="m-marquee_item"><span class="tx-2xl">Create</span><span class="tx-lsm">UX</span></li>
+                <li class="m-marquee_item"><span class="tx-2xl">Sleep</span><span class="tx-lsm">PRD</span></li>
+                <li class="m-marquee_item"><span class="tx-2xl">Design</span><span class="tx-lsm">UI</span></li>
+                <li class="m-marquee_item"><span class="tx-2xl">Develop</span><span class="tx-lsm">FE</span></li>
+            </ul>
+            <ul class="m-marquee_viewport">
+                <li class="m-marquee_item"><span class="tx-2xl">Design</span><span class="tx-lsm">UI</span></li>
+                <li class="m-marquee_item"><span class="tx-2xl">Develop</span><span class="tx-lsm">FE</span></li>
+                <li class="m-marquee_item"><span class="tx-2xl">Create</span><span class="tx-lsm">UX</span></li>
+                <li class="m-marquee_item"><span class="tx-2xl">Sleep</span><span class="tx-lsm">PRD</span></li>
+                <li class="m-marquee_item"><span class="tx-2xl">Design</span><span class="tx-lsm">UI</span></li>
+                <li class="m-marquee_item"><span class="tx-2xl">Develop</span><span class="tx-lsm">FE</span></li>
+            </ul>
+        </div>
+        <div class="o-footer_info">
+            <div class="o-footer_contact">
+                <a href="mailto:manish@example.com">manish@example.com</a>
+                <p>© 2026 Manish Mandia. All rights reserved.</p>
+            </div>
+            <div class="o-footer_socials">
+                <a class="o-footer_socialLink" href="https://linkedin.com/in/manishmandia" target="_blank">
+                    <span>LinkedIn</span>
+                    <svg width="7" height="7" viewBox="0 0 7 7" fill="none"><path d="M1.35.65a.5.5 0 1 0-.7.7l.7-.7ZM6 6.5a.5.5 0 0 0 .5-.5V1.5a.5.5 0 0 0-1 0v4h-4a.5.5 0 0 0 0 1H6ZM1 1l-.35.35 5 5L6 6l.35-.35-5-5L1 1Z" fill="currentColor"></path></svg>
+                </a>
+                <a class="o-footer_socialLink" href="https://github.com/manishmandia" target="_blank">
+                    <span>GitHub</span>
+                    <svg width="7" height="7" viewBox="0 0 7 7" fill="none"><path d="M1.35.65a.5.5 0 1 0-.7.7l.7-.7ZM6 6.5a.5.5 0 0 0 .5-.5V1.5a.5.5 0 0 0-1 0v4h-4a.5.5 0 0 0 0 1H6ZM1 1l-.35.35 5 5L6 6l.35-.35-5-5L1 1Z" fill="currentColor"></path></svg>
+                </a>
+                <a class="o-footer_socialLink" href="https://twitter.com/manishmandia" target="_blank">
+                    <span>Twitter</span>
+                    <svg width="7" height="7" viewBox="0 0 7 7" fill="none"><path d="M1.35.65a.5.5 0 1 0-.7.7l.7-.7ZM6 6.5a.5.5 0 0 0 .5-.5V1.5a.5.5 0 0 0-1 0v4h-4a.5.5 0 0 0 0 1H6ZM1 1l-.35.35 5 5L6 6l.35-.35-5-5L1 1Z" fill="currentColor"></path></svg>
+                </a>
             </div>
         </div>
+        <div class="o-footer_logo">
+            <span class="o-footer_logoLetter" style="--delay: 0ms">M</span>
+            <span class="o-footer_logoLetter" style="--delay: 20ms">A</span>
+            <span class="o-footer_logoLetter" style="--delay: 40ms">N</span>
+            <span class="o-footer_logoLetter" style="--delay: 60ms">I</span>
+            <span class="o-footer_logoLetter" style="--delay: 80ms">S</span>
+            <span class="o-footer_logoLetter" style="--delay: 100ms">H</span>
+            <span class="o-footer_logoLetter" style="--delay: 120ms">&nbsp;</span>
+            <span class="o-footer_logoLetter" style="--delay: 140ms">M</span>
+            <span class="o-footer_logoLetter" style="--delay: 160ms">A</span>
+            <span class="o-footer_logoLetter" style="--delay: 180ms">N</span>
+            <span class="o-footer_logoLetter" style="--delay: 200ms">D</span>
+            <span class="o-footer_logoLetter" style="--delay: 220ms">I</span>
+            <span class="o-footer_logoLetter" style="--delay: 240ms">A</span>
+        </div>
+        <figure class="o-footer_cover">
+            <img src="assets/user_background.jpg" alt="Manish Mandia">
+        </figure>
     </footer>
 
+    <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
     <script src="first.js"></script>
-    <script>
-        // Navbar scroll effect
-        window.addEventListener('scroll', () => {
-            const navbar = document.querySelector('.glass_navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-
-        // Fade-in animation on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        // Observe all sections and cards
-        document.querySelectorAll('.timeline-item, .work-card, .stat-box, .contact-link').forEach(el => {
-            el.classList.add('fade-in');
-            observer.observe(el);
-        });
-
-        // Smooth scroll for nav links
-        document.querySelectorAll('.glass_navbar a').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetSection = document.querySelector(targetId);
-                if (targetSection) {
-                    targetSection.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-    </script>
 </body>
 </html>

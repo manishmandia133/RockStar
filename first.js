@@ -1,126 +1,262 @@
 document.addEventListener('DOMContentLoaded', () => {
-    /* ----------------------------------------------------
-    1. Cursor Tracking with requestAnimationFrame
-    ---------------------------------------------------- */
-    const heroSection = document.getElementById('hero');
-    const root = document.documentElement;
 
-    let targetX = window.innerWidth / 2;
-    let targetY = window.innerHeight / 2;
-    let currentX = targetX;
-    let currentY = targetY;
+    /* ============================================================
+       0. LENIS SMOOTH SCROLL — Premium buttery scrolling
+       ============================================================ */
+    const lenis = new Lenis({
+        duration: 1.2,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        orientation: 'vertical',
+        gestureOrientation: 'vertical',
+        smoothWheel: true,
+        smoothTouch: false,
+        touchMultiplier: 2,
+    });
 
-    let baseRadius = 150;
-    let currentRadius = baseRadius;
-    let lastX = currentX;
-    let lastY = currentY;
-
-    function animateCursor() {
-        currentX += (targetX - currentX) * 0.25;
-        currentY += (targetY - currentY) * 0.25;
-
-        // Calculate movement speed
-        const speed = Math.sqrt(Math.pow(currentX - lastX, 2) + Math.pow(currentY - lastY, 2));
-        lastX = currentX;
-        lastY = currentY;
-
-        // Dynamic radius based on speed
-        const dynamicTargetRadius = baseRadius + Math.min(speed * 3, 100);
-        currentRadius += (dynamicTargetRadius - currentRadius) * 0.1;
-
-        root.style.setProperty('--x', `${currentX}px`);
-        root.style.setProperty('--y', `${currentY}px`);
-        root.style.setProperty('--cursor-radius', `${currentRadius}px`);
-
-        requestAnimationFrame(animateCursor);
+    function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
     }
-    animateCursor();
+    requestAnimationFrame(raf);
 
-    heroSection.addEventListener('mousemove', (e) => {
-        targetX = e.clientX;
-        targetY = e.clientY;
+    /* ============================================================
+       1. LOADING SCREEN — Letter reveal + progress bar, then hide
+       ============================================================ */
+    const loader = document.getElementById('js-loader');
+    const html = document.documentElement;
+
+    // Pause scrolling during loader
+    lenis.stop();
+
+    // After the progress bar animation completes (~2.2s), hide loader
+    setTimeout(() => {
+        if (loader) {
+            loader.classList.add('-hidden');
+            html.classList.remove('is-loading');
+            html.classList.add('is-loaded');
+            lenis.start();
+        }
+    }, 2400);
+
+    // Split hero lines into individual spans for animation
+    document.querySelectorAll('.o-hero_line').forEach(line => {
+        const text = line.textContent.trim();
+        line.innerHTML = `<span>${text}</span>`;
     });
 
-    /* ----------------------------------------------------
-    2. Parallax effect for hero layers
-    ---------------------------------------------------- */
-    heroSection.addEventListener('mousemove', (e) => {
-        const layers = document.querySelectorAll('.hero-layer');
-        const x = (e.clientX / window.innerWidth - 0.5) * 20;
-        const y = (e.clientY / window.innerHeight - 0.5) * 20;
-
-        layers[0].style.transform = `translate(${x}px, ${y}px)`;
-        layers[1].style.transform = `translate(${x * 0.5}px, ${y * 0.5}px)`;
+    /* ============================================================
+       2. SCROLL REVEAL — IntersectionObserver for [data-scroll-reveal]
+       ============================================================ */
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-inview');
+            }
+        });
+    }, {
+        threshold: 0.15,
+        rootMargin: '0px 0px -80px 0px'
     });
 
-    /* ----------------------------------------------------
-    3. 3D Premium Tilt Effect with Dynamic Glow on Work Cards
-    ---------------------------------------------------- */
-    const workCards = document.querySelectorAll('.work-card');
-
-    workCards.forEach(card => {
-        card.addEventListener('mousemove', (e) => {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-
-            // Subtle 12 degree max rotation for premium feel
-            const rotateX = ((y - centerY) / centerY) * -12;
-            const rotateY = ((x - centerX) / centerX) * 12;
-
-            // Dynamic glow position follows cursor
-            const glowX = (x / rect.width) * 100;
-            const glowY = (y / rect.height) * 100;
-
-            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-
-            // Update glow gradient position
-            card.style.background = `radial-gradient(circle at ${glowX}% ${glowY}%, rgba(0, 220, 130, 0.2) 0%, #0d0d0d 50%, #1a1a1a 100%)`;
-        });
-
-        card.addEventListener('mouseleave', () => {
-            card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg)`;
-            card.style.transition = 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), background 0.6s ease';
-            card.style.background = 'linear-gradient(135deg, #0d0d0d 0%, #1a1a1a 100%)';
-        });
-
-        card.addEventListener('mouseenter', () => {
-            card.style.transition = 'none';
-        });
+    document.querySelectorAll('[data-scroll-reveal]').forEach(el => {
+        revealObserver.observe(el);
     });
 
-    /* ----------------------------------------------------
-    4. Initialize Locomotive Scroll (if available)
-    ---------------------------------------------------- */
-    if (typeof LocomotiveScroll !== 'undefined') {
-        try {
-            const scroll = new LocomotiveScroll({
-                el: document.querySelector('#main'),
-                smooth: true,
-                tablet: true
-            });
-        } catch (e) {
-            console.log('Locomotive Scroll not fully loaded, using native scroll');
+    // Separate observer for work cards (clip-path reveal)
+    const cardObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Add staggered delay
+                const index = Array.from(document.querySelectorAll('.o-works_card')).indexOf(entry.target);
+                setTimeout(() => {
+                    entry.target.classList.add('is-inview');
+                }, index * 200);
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    });
+
+    document.querySelectorAll('.o-works_card').forEach(card => {
+        cardObserver.observe(card);
+    });
+
+    /* ============================================================
+       3. HEADER — Hide on scroll down, show on scroll up
+       ============================================================ */
+    const header = document.getElementById('header');
+    let lastScrollY = 0;
+    let ticking = false;
+
+    function updateHeader() {
+        const currentScrollY = window.scrollY;
+
+        if (currentScrollY > 300) {
+            if (currentScrollY > lastScrollY) {
+                header.classList.add('-hidden');
+            } else {
+                header.classList.remove('-hidden');
+            }
+        } else {
+            header.classList.remove('-hidden');
+        }
+
+        lastScrollY = currentScrollY;
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            requestAnimationFrame(updateHeader);
+            ticking = true;
+        }
+    });
+
+    /* ============================================================
+       4. FOOTER HEIGHT — Measure and set placeholder
+       ============================================================ */
+    function setFooterHeight() {
+        const footer = document.querySelector('.o-footer');
+        const placeholder = document.querySelector('.o-footer_placeholder');
+        if (footer && placeholder) {
+            const height = footer.offsetHeight;
+            document.documentElement.style.setProperty('--footer-height', height + 'px');
         }
     }
 
-    /* ----------------------------------------------------
-    5. Stats counter animation
-    ---------------------------------------------------- */
-    const statBoxes = document.querySelectorAll('.stat-box');
+    setFooterHeight();
+    window.addEventListener('resize', setFooterHeight);
 
-    const animateStats = () => {
-        statBoxes.forEach(box => {
-            const rect = box.getBoundingClientRect();
-            if (rect.top < window.innerHeight && rect.bottom >= 0) {
-                box.classList.add('visible');
+    /* ============================================================
+       5. SMOOTH SCROLL — Nav link click (uses Lenis)
+       ============================================================ */
+    document.querySelectorAll('[data-nav]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const target = document.querySelector(targetId);
+            if (target) {
+                lenis.scrollTo(target, { offset: -100 });
             }
         });
-    };
+    });
 
-    window.addEventListener('scroll', animateStats);
-    animateStats(); // Check on load
+    /* ============================================================
+       6. PARALLAX — Subtle image movement on scroll in work cards
+       ============================================================ */
+    function updateParallax() {
+        document.querySelectorAll('[data-parallax]').forEach(img => {
+            const rect = img.getBoundingClientRect();
+            const windowH = window.innerHeight;
+
+            if (rect.top < windowH && rect.bottom > 0) {
+                const progress = (windowH - rect.top) / (windowH + rect.height);
+                const offset = (progress - 0.5) * 40; // subtle parallax
+                img.style.transform = `scale(1.15) translateY(${offset}px)`;
+            }
+        });
+    }
+
+    window.addEventListener('scroll', () => {
+        requestAnimationFrame(updateParallax);
+    });
+
+    /* ============================================================
+       7. EXPERTISE ITEMS — Hover with background photo reveal (CHD-style)
+       ============================================================ */
+    const expertiseItems = document.querySelectorAll('.o-expertise_item');
+    const expertiseList = document.querySelector('.o-expertise_list');
+    const expertisePhotos = document.querySelectorAll('.o-expertise_photo');
+
+    if (expertiseList) {
+        // Cascading opacity on list enter
+        expertiseList.addEventListener('mouseenter', () => {
+            expertiseItems.forEach(item => {
+                item.style.opacity = '0.25';
+            });
+        });
+
+        // Reset everything on list leave
+        expertiseList.addEventListener('mouseleave', () => {
+            expertiseItems.forEach(item => {
+                item.style.opacity = '';
+            });
+            // Hide all photos
+            expertisePhotos.forEach(photo => {
+                photo.classList.remove('-active');
+            });
+        });
+
+        // Per-item: highlight + reveal matching photo
+        expertiseItems.forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                item.style.opacity = '1';
+
+                // Activate matching photo
+                const index = item.getAttribute('data-index');
+                expertisePhotos.forEach(photo => {
+                    if (photo.getAttribute('data-expertise-photo') === index) {
+                        photo.classList.add('-active');
+                    } else {
+                        photo.classList.remove('-active');
+                    }
+                });
+            });
+
+            item.addEventListener('mouseleave', () => {
+                item.style.opacity = '0.25';
+            });
+        });
+    }
+
+    /* ============================================================
+       8. MAGNETIC HOVER — Buttons and contact links
+       ============================================================ */
+    document.querySelectorAll('.o-contact_link, .o-footer_socialLink').forEach(el => {
+        el.addEventListener('mousemove', (e) => {
+            const rect = el.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            el.style.transform = `translate(${x * 0.08}px, ${y * 0.08}px)`;
+        });
+
+        el.addEventListener('mouseleave', () => {
+            el.style.transform = '';
+        });
+    });
+
+    /* ============================================================
+       9. HERO BACKGROUND — Subtle mouse parallax
+       ============================================================ */
+    const hero = document.querySelector('.o-hero');
+    const heroBg = document.querySelector('.o-hero_bg img');
+
+    if (hero && heroBg) {
+        hero.addEventListener('mousemove', (e) => {
+            const x = (e.clientX / window.innerWidth - 0.5) * 15;
+            const y = (e.clientY / window.innerHeight - 0.5) * 15;
+
+            heroBg.style.transform = `scale(1.1) translate(${x}px, ${y}px)`;
+        });
+    }
+
+    /* ============================================================
+       10. MAIN CONTENT — Ensure z-index stacking above footer
+       ============================================================ */
+    const main = document.getElementById('main');
+    if (main) {
+        main.style.position = 'relative';
+        main.style.zIndex = '2';
+        main.style.background = 'inherit';
+    }
+
+    // Set section backgrounds explicitly (needed for sticky footer)
+    document.querySelectorAll('.o-about, .o-journey, .o-contact').forEach(s => {
+        s.style.background = '#fff';
+    });
+    document.querySelectorAll('.o-expertise, .o-works, .o-bigWords').forEach(s => {
+        s.style.background = '#000';
+    });
+
 });
